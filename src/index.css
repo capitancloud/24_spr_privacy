@@ -6,58 +6,58 @@
 
 @layer base {
   :root {
-    --background: 150 20% 98%;
-    --foreground: 160 25% 12%;
+    --background: 160 25% 8%;
+    --foreground: 160 15% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 160 25% 12%;
+    --card: 160 20% 12%;
+    --card-foreground: 160 15% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 160 25% 12%;
+    --popover: 160 20% 12%;
+    --popover-foreground: 160 15% 95%;
 
-    --primary: 158 64% 42%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 158 64% 50%;
+    --primary-foreground: 160 25% 8%;
 
-    --secondary: 160 20% 94%;
-    --secondary-foreground: 160 25% 20%;
+    --secondary: 160 20% 18%;
+    --secondary-foreground: 160 15% 90%;
 
-    --muted: 160 15% 92%;
-    --muted-foreground: 160 10% 45%;
+    --muted: 160 15% 20%;
+    --muted-foreground: 160 10% 60%;
 
-    --accent: 158 50% 90%;
-    --accent-foreground: 158 64% 30%;
+    --accent: 158 50% 20%;
+    --accent-foreground: 158 64% 70%;
 
-    --destructive: 0 72% 55%;
+    --destructive: 0 72% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --warning: 38 92% 55%;
-    --warning-foreground: 38 92% 15%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 95%;
 
-    --success: 142 72% 42%;
+    --success: 142 72% 45%;
     --success-foreground: 0 0% 100%;
 
-    --info: 200 80% 50%;
+    --info: 200 80% 55%;
     --info-foreground: 0 0% 100%;
 
-    --sensitive: 350 80% 55%;
+    --sensitive: 350 80% 60%;
     --sensitive-foreground: 0 0% 100%;
 
-    --border: 160 20% 88%;
-    --input: 160 20% 88%;
-    --ring: 158 64% 42%;
+    --border: 160 20% 20%;
+    --input: 160 20% 20%;
+    --ring: 158 64% 50%;
 
     --radius: 0.75rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(158, 64%, 42%) 0%, hsl(180, 60%, 45%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(158, 40%, 95%) 0%, hsl(180, 30%, 98%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(160, 20%, 98%) 100%);
-    --gradient-sensitive: linear-gradient(135deg, hsl(350, 80%, 95%) 0%, hsl(350, 60%, 98%) 100%);
-    --gradient-safe: linear-gradient(135deg, hsl(142, 60%, 95%) 0%, hsl(142, 40%, 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(158, 64%, 50%) 0%, hsl(180, 60%, 50%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(160, 25%, 6%) 0%, hsl(180, 20%, 10%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(160, 20%, 14%) 0%, hsl(160, 20%, 10%) 100%);
+    --gradient-sensitive: linear-gradient(135deg, hsl(350, 50%, 15%) 0%, hsl(350, 40%, 12%) 100%);
+    --gradient-safe: linear-gradient(135deg, hsl(142, 40%, 15%) 0%, hsl(142, 30%, 12%) 100%);
 
-    --shadow-sm: 0 1px 2px 0 hsl(160 25% 12% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(160 25% 12% / 0.08), 0 2px 4px -2px hsl(160 25% 12% / 0.05);
-    --shadow-lg: 0 10px 15px -3px hsl(160 25% 12% / 0.08), 0 4px 6px -4px hsl(160 25% 12% / 0.05);
-    --shadow-glow: 0 0 30px hsl(158 64% 42% / 0.15);
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.4), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.4), 0 4px 6px -4px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 40px hsl(158 64% 50% / 0.25);
   }
 
   .dark {
@@ -134,6 +134,14 @@
     animation: pulse 3s ease-in-out infinite;
   }
 
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
   @keyframes fadeUp {
     from {
       opacity: 0;
@@ -142,6 +150,24 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px hsl(158 64% 50% / 0.2);
+    }
+    to {
+      box-shadow: 0 0 40px hsl(158 64% 50% / 0.4);
     }
   }
 
