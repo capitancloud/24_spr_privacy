@@ -1,34 +1,47 @@
 import { motion } from 'framer-motion';
 import { privacyConcepts } from '@/data/mockData';
 import ConceptCard from './ConceptCard';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Scale, Globe, Euro, Heart } from 'lucide-react';
 
 const ConceptsSection = () => {
   return (
-    <section className="py-16 px-4">
-      <div className="container max-w-6xl mx-auto">
+    <section className="py-20 px-4 relative overflow-hidden">
+      {/* Background decorations */}
+      <motion.div
+        className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-info/5 blur-3xl"
+        animate={{ 
+          x: [0, 30, 0],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
+
+      <div className="container max-w-6xl mx-auto relative z-10">
         {/* Section header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary mb-4"
+            whileHover={{ scale: 1.05 }}
+          >
             <BookOpen className="w-4 h-4" />
-            <span className="text-sm font-medium">Fondamenti GDPR</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            I Pilastri della Privacy
+            <span className="text-sm font-medium">I 4 Pilastri del GDPR</span>
+          </motion.div>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+            Le Regole d'Oro della <span className="gradient-text">Privacy</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprendi i principi fondamentali che guidano la protezione dei dati in Europa. 
-            Ogni sviluppatore dovrebbe conoscerli!
+            Questi principi sono la base di tutto. Memorizzali e applicali sempre 
+            quando sviluppi software che gestisce dati personali.
           </p>
         </motion.div>
 
         {/* Concept cards grid */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 mb-16">
           {privacyConcepts.map((concept, index) => (
             <ConceptCard key={concept.id} concept={concept} index={index} />
           ))}
@@ -36,43 +49,82 @@ const ConceptsSection = () => {
 
         {/* Why Europe section */}
         <motion.div
-          className="mt-12 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/20 border border-primary/20"
+          className="bg-card border border-border rounded-3xl p-8 shadow-lg overflow-hidden relative"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-display font-bold mb-4 flex items-center gap-3">
-            🇪🇺 Perché l'Europa è Leader nella Privacy?
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-semibold mb-2">Protezione come Diritto Fondamentale</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                La Carta dei Diritti Fondamentali dell'UE (Art. 8) riconosce la protezione 
-                dei dati personali come diritto umano. Non è solo compliance, è etica.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Standard Globale</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Il GDPR ha ispirato leggi simili in tutto il mondo (LGPD in Brasile, CCPA in 
-                California). Conoscere il GDPR ti prepara per il mercato globale.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Sanzioni Significative</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Multe fino al 4% del fatturato globale o 20 milioni di euro. La privacy 
-                non è opzionale: è un requisito di business.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Fiducia degli Utenti</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                App che rispettano la privacy costruiscono fiducia duratura. Gli utenti 
-                europei sono sempre più consapevoli e scelgono servizi trasparenti.
-              </p>
-            </div>
+          {/* Background decoration */}
+          <div className="absolute top-0 right-0 text-[200px] opacity-5 pointer-events-none">
+            🇪🇺
+          </div>
+
+          <motion.h3 
+            className="text-2xl md:text-3xl font-display font-bold mb-8 flex items-center gap-3"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-4xl">🇪🇺</span>
+            Perché l'Europa è Leader nella Privacy?
+          </motion.h3>
+          
+          <div className="grid md:grid-cols-2 gap-6 relative z-10">
+            {[
+              {
+                icon: Scale,
+                title: 'È un Diritto Fondamentale',
+                color: 'primary',
+                description: 'La Carta dei Diritti Fondamentali dell\'UE (Art. 8) riconosce la protezione dei dati personali come diritto umano. Non è solo burocrazia, è etica!',
+              },
+              {
+                icon: Globe,
+                title: 'Standard Globale',
+                color: 'info',
+                description: 'Il GDPR ha ispirato leggi simili in tutto il mondo (Brasile, California, Giappone...). Imparalo e sei pronto per il mercato globale.',
+              },
+              {
+                icon: Euro,
+                title: 'Sanzioni Serie',
+                color: 'warning',
+                description: 'Multe fino al 4% del fatturato globale o 20 milioni di euro. Non è uno scherzo: la privacy è un requisito di business.',
+              },
+              {
+                icon: Heart,
+                title: 'Fiducia degli Utenti',
+                color: 'success',
+                description: 'Le app che rispettano la privacy costruiscono fiducia. Gli utenti europei sono consapevoli e preferiscono servizi trasparenti.',
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                className="p-5 rounded-xl bg-secondary/30 border border-border"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 * index }}
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: '0 0 20px hsl(158 64% 50% / 0.1)',
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <motion.div
+                    className={`p-2 rounded-lg bg-${item.color}/20`}
+                    animate={{ rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, delay: index * 0.5 }}
+                  >
+                    <item.icon className={`w-5 h-5 text-${item.color}`} />
+                  </motion.div>
+                  <div>
+                    <h4 className="font-semibold mb-2">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
