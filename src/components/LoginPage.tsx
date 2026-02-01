@@ -160,20 +160,6 @@ const LoginPage = () => {
                 )}
               </Button>
             </form>
-
-            {/* Security info */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="text-center text-xs text-muted-foreground space-y-1 pt-4 border-t border-border/50"
-            >
-              <p className="flex items-center justify-center gap-1">
-                <Lock className="w-3 h-3" />
-                Il codice viene verificato tramite hash SHA-256
-              </p>
-              <p>Nessuna password viene memorizzata in chiaro</p>
-            </motion.div>
           </CardContent>
         </Card>
       </motion.div>
