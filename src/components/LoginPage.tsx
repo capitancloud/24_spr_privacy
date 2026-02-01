@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Lock, Eye, EyeOff, AlertCircle, Sparkles } from 'lucide-react';
+import { Shield, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -102,26 +102,6 @@ const LoginPage = () => {
           </CardHeader>
 
           <CardContent className="space-y-6">
-            {/* Educational note */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="bg-primary/10 border border-primary/20 rounded-lg p-4"
-            >
-              <div className="flex items-start gap-3">
-                <Sparkles className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div className="text-sm">
-                  <p className="font-semibold text-primary mb-1">🔐 Nota Educativa</p>
-                  <p className="text-muted-foreground">
-                    Questa schermata simula un controllo di accesso. 
-                    In un'app reale, le credenziali sarebbero verificate tramite un server sicuro, 
-                    mai esposte nel codice frontend.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground flex items-center gap-2">
