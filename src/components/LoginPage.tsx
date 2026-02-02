@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import superProgrammatoreLogo from '@/assets/super-programmatore-logo.png';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -78,17 +79,16 @@ const LoginPage = () => {
         <Card className="bg-card/80 backdrop-blur-xl border-primary/20 shadow-2xl">
           <CardHeader className="text-center space-y-4">
             <motion.div
-              className="mx-auto w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center shadow-lg"
-              animate={{ 
-                boxShadow: [
-                  '0 0 20px rgba(34, 197, 94, 0.3)',
-                  '0 0 40px rgba(34, 197, 94, 0.5)',
-                  '0 0 20px rgba(34, 197, 94, 0.3)'
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mx-auto"
             >
-              <Shield className="w-10 h-10 text-primary-foreground" />
+              <img 
+                src={superProgrammatoreLogo} 
+                alt="Super Programmatore Logo" 
+                className="w-48 h-auto mx-auto"
+              />
             </motion.div>
             
             <div>
@@ -154,7 +154,7 @@ const LoginPage = () => {
                   />
                 ) : (
                   <>
-                    <Shield className="w-4 h-4 mr-2" />
+                    <Lock className="w-4 h-4 mr-2" />
                     Accedi all'App Educativa
                   </>
                 )}
